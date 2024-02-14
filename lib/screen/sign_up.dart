@@ -6,7 +6,9 @@ class SignUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Icon(Icons.dark_mode),
+      ),
       body: const Column(
         children: [
           Padding(
