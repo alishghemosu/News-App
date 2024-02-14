@@ -6,8 +6,9 @@ class SignInPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Column(
+    return Scaffold(
+      appBar: AppBar(),
+      body: const Column(
         children: [
           Padding(
             padding: EdgeInsets.only(top: 50),
