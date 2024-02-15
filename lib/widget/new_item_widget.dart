@@ -1,25 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/screen/sports_page.dart';
+import 'package:news_app/widget/multiple_choice_question.dart';
 
-class LiveScreen extends StatelessWidget {
-  final String fullImage;
-  final String liveText;
-  final String imageDescription;
+class NewItemWidget extends StatelessWidget {
+  final NewsItemData itemData;
   final VoidCallback onPressed;
-  final String topic;
-  final String? topicDiscription;
-  final String? authourImage;
-  final String? authourName;
+  final bool isMultiChoiceAvailable;
 
-  const LiveScreen(
-      {required this.fullImage,
-      required this.liveText,
-      required this.imageDescription,
-      required this.onPressed,
-      required this.topic,
-      this.topicDiscription,
-      this.authourImage,
-      this.authourName,
-      Key? key})
+  const NewItemWidget(
+      {required this.onPressed,
+      required this.itemData,
+      Key? key,
+      required this.isMultiChoiceAvailable})
       : super(key: key);
 
   @override
@@ -35,7 +27,7 @@ class LiveScreen extends StatelessWidget {
                 ClipRRect(
                   borderRadius: BorderRadius.circular(10),
                   child: Image.asset(
-                    fullImage,
+                    itemData.fullImage ?? "",
                     height: 200,
                     width: double.infinity,
                     fit: BoxFit.cover,
@@ -51,7 +43,7 @@ class LiveScreen extends StatelessWidget {
                         color: Colors.red,
                       ),
                       Text(
-                        liveText,
+                        itemData.liveText ?? '',
                         style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -65,7 +57,7 @@ class LiveScreen extends StatelessWidget {
                   bottom: 20,
                   left: 20,
                   child: Text(
-                    imageDescription,
+                    itemData.imageDescription ?? '',
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 20,
@@ -76,7 +68,7 @@ class LiveScreen extends StatelessWidget {
               ],
             ),
             Text(
-              topic,
+              itemData.topic ?? "",
               style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
             ),
             const SizedBox(
@@ -87,20 +79,21 @@ class LiveScreen extends StatelessWidget {
                 ClipRRect(
                   borderRadius: BorderRadius.circular(10),
                   child: Image.asset(
-                    authourImage!,
+                    itemData.authourImage ?? '',
                     height: 20,
                     width: 20,
                     fit: BoxFit.cover,
                   ),
                 ),
                 const SizedBox(width: 10),
-                Text(authourName!),
+                Text(itemData.authourImage ?? ""),
               ],
             ),
             Text(
-              topicDiscription!,
+              itemData.topicDiscription ?? '',
               style: const TextStyle(fontSize: 15),
             ),
+            if (isMultiChoiceAvailable) const MultiChoice(),
           ],
         ),
       ),

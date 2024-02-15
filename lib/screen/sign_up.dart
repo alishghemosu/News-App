@@ -7,7 +7,7 @@ class SignUpPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("testing"),
+        title: const Icon(Icons.dark_mode),
       ),
       body: const Column(
         children: [

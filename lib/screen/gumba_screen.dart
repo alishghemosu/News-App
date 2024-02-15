@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/screen/sports_page.dart';
 
 class GumbaPage extends StatefulWidget {
-  const GumbaPage({super.key});
+  const GumbaPage({super.key, this.argumentData});
+  final NewsItemData? argumentData;
 
   @override
   State<GumbaPage> createState() => _GumbaPageState();
@@ -10,6 +12,8 @@ class GumbaPage extends StatefulWidget {
 class _GumbaPageState extends State<GumbaPage> {
   @override
   Widget build(BuildContext context) {
+    NewsItemData newsData =
+        ModalRoute.of(context)?.settings.arguments as NewsItemData;
     return Scaffold(
       appBar: AppBar(
         actions: [
@@ -69,17 +73,17 @@ class _GumbaPageState extends State<GumbaPage> {
               const SizedBox(height: 10),
               Container(
                 margin: const EdgeInsets.all(10),
-                child: const Column(
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Gumba ..............',
-                      style: TextStyle(
+                      newsData.topic ?? "",
+                      style: const TextStyle(
                         fontSize: 40,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Text(
+                    const Text(
                       'Destination Nepal',
                       style: TextStyle(
                         fontSize: 20,
@@ -92,7 +96,8 @@ class _GumbaPageState extends State<GumbaPage> {
               ClipRRect(
                 borderRadius: BorderRadius.circular(50),
                 child: Image.asset(
-                  "assets/images/gumba.jpeg",
+                  // widget.argumentData?.fullImage ?? "", // constructor data
+                  newsData.fullImage ?? "", // arugment data
                   height: 290,
                   fit: BoxFit.cover,
                 ),
